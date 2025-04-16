@@ -30,7 +30,7 @@ class CandidatesPage extends StatelessWidget {
                 context,
                 '/confirmation',
                 arguments: {
-                  'pollId': '12345', // Replace with actual pollId from your backend
+                  'pollId': '12345', // Replace with actual pollId from backend
                   'candidate': candidates[index]['name'],
                 },
               );
