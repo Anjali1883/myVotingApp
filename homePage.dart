@@ -1,4 +1,5 @@
 // this is the home page which would be shown to the user as the app is used
+// this leads user to the login page
 import 'package:flutter/material.dart';
 
 class HomePage extends StatelessWidget {
