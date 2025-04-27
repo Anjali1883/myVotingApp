@@ -1,16 +1,29 @@
 // list of candidates is shown with their details and pictures
 // user can select one candidate among all
 
+// screens/candidates_page.dart
+
 import 'package:flutter/material.dart';
 
-class CandidatesPage extends StatelessWidget {
+class CandidatesPage extends StatefulWidget {
+  final String eventId;
+
+  const CandidatesPage({super.key, required this.eventId});
+
+  @override
+  _CandidatesPageState createState() => _CandidatesPageState();
+}
+
+class _CandidatesPageState extends State<CandidatesPage> {
   final List<Map<String, String>> candidates = [
     {'name': 'Candidate 1', 'details': 'Details of Candidate 1'},
     {'name': 'Candidate 2', 'details': 'Details of Candidate 2'},
-    // Add more candidates as needed
   ];
 
-  CandidatesPage({super.key});
+  @override
+  void initState() {
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -21,21 +34,20 @@ class CandidatesPage extends StatelessWidget {
       body: ListView.builder(
         itemCount: candidates.length,
         itemBuilder: (context, index) {
+          var candidate = candidates[index];
           return ListTile(
-            title: Text(candidates[index]['name']!),
-            subtitle: Text(candidates[index]['details']!),
+            title: Text(candidate['name']!),
+            subtitle: Text(candidate['details']!),
             onTap: () {
-  // Pass the pollId and selected candidate details to the confirmation page
               Navigator.pushNamed(
                 context,
                 '/confirmation',
                 arguments: {
-                  'pollId': '12345', // Replace with actual pollId from backend
-                  'candidate': candidates[index]['name'],
+                  'candidateName': candidate['name'],
+                  'eventId': widget.eventId,
                 },
               );
-            }
-
+            },
           );
         },
       ),
