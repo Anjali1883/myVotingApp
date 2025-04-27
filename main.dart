@@ -1,12 +1,16 @@
 // this is the main page of the voting app
 import 'package:flutter/material.dart';
-import 'home_page.dart';
-import 'login_page.dart';
-import 'candidates_page.dart';
-import 'confirmation_page.dart';
-import 'conclusion_screen.dart';
+import 'screens/home_page.dart';
+import 'screens/login_page.dart';
+import 'screens/event_list_page.dart';
+import 'screens/candidate_list_page.dart';
+import 'screens/confirmation_page.dart';
+import 'screens/feedback_page.dart';
+import 'screens/results_page.dart';
 
-void main() => runApp(VotingApp());
+void main()  {
+  runApp(VotingApp());
+}
 
 class VotingApp extends StatelessWidget {
   const VotingApp({super.key});
@@ -19,9 +23,11 @@ class VotingApp extends StatelessWidget {
       routes: {
         '/': (context) => HomePage(),
         '/login': (context) => LoginPage(),
-        '/candidates': (context) => CandidatesPage(),
-        '/confirmation': (context) => ConfirmationPage(),
+        '/eventList': (context) => EventListPage(),
+        '/candidates': (context) => CandidatesPage(eventId: ''),
+        '/confirmation': (context) => ConfirmationPage(candidateName: '', eventId: ''),
         '/conclusion': (context) => ConclusionPage(),
+        '/results': (context) => ResultsPage(),
       },
     );
   }
